@@ -1,0 +1,110 @@
+Pseudocode
+Import json
+
+
+Def getMenuChoice:
+	Prints the menu below
+    ("""
+          0) exit
+       1) load default game
+       2) load a game file
+       3) save the current game
+       4) edit or add a node
+       5) play the current game
+    """)
+	Variable menu = “Select a number” and ask for input
+	Return variable menu so that the menu can accept another input later
+Def getDefaultGame():
+	defaultGame = {"start": ["default start node", "start over","start","Quit","quit"],}, so the user has a template for the game and can reset it to the template
+	Print "Loaded Defualt Game" to show that this process works
+	Return defaultGame for further use
+Def playGame() with parameter game:
+	keepGoing2 = True
+	variable currentNode = playNode with parameters game and "start", allowing use playNode and check what inputs are made within it to change currentNode
+	while keepGoing2:
+		if currentNode == "quit", meaning your game node is quit:
+			print("game over!")
+			keepGoing2 = false, ending the loop
+		else:
+			currentNode = playNode with parameters game and currentNode
+def loadGame():
+	infile variable = opens files named game.json, reads it
+	variable game = loads the json file from infile
+	prints game
+	closes infile
+	return	variable game, allowing it to be used again
+def saveGame() with parameter game:
+	outfile = opens the file named game.json and writes it
+	dumps json file =game, using the contents from outfile, setting indent = 2 to make it readable by the user
+	closes outfile()
+	print out the contents of the file through json.dumps from variable game, and indent = 2 for legibility
+	print that you saved the data to game.json
+def editField() with parameters game and node:
+	variable gameLayout = ("Description","MenueA","NodeA","MenueB","NodeB"), a tuple containing these texts so that the user can know what each variable is the story format
+	for indexed variable in changenode in enumerated game[node]:
+		userinput = input f"{gamelayout[index]} ({game[node][index]}):"), which prints out what a node, description, etc is and is currently equal to
+		if userinput == nothing (just hitting enter):
+			keep the node as it was without current user input, setting = changenode to ensure its unchanged from when editField was called
+		else:
+			change the node to whatever the user input with variable userinput
+def editNode() with parameter game:
+	print instructions for the user to use an existing node or make a new one
+	print "current nodes:"
+	for item in game.keys(), meaning it will look for keys in game
+		print item out, or rather print out the keys
+	variable userinput = ask for user input:
+	if userinput exists in the keys of game:
+		call editField with parameters game and userinput (meaning use the existing key)
+	else:
+		game[userinput] = ["","","","",""], creating a new key in game, with empty nodes, MenuA/B, etc
+		call editField with parameters game and userinput, so that it uses the new key
+
+def playNode() with parameters game and currentNode:
+	if currentNode exists in the keys of game:
+		(desc, menuA, nodeA, menuB, nodeB) = game[currentNode], meaning these 5 variables are aligned with their equivalent in game to be called momentarily
+		print out the current description
+		variable decision asks for input using f"""Choose your next move
+        1. {game[currentNode][1]}
+        2. {game[currentNode][3]} """), basically printing MenuA and MenuB
+		if decision == "1":
+			set currentNode = nodeA, meaning the chosen node becomes the new key
+		if decision == "2":
+			set currentNode = nodeB, meaning the chosen node becomes the new key
+
+		else:
+			print out something telling user it was an invalid input
+			return currentNode, so that the user can try again 
+	
+	
+	else:
+		print a statement telling the user the file doesn't have a valid key
+		currentNode = "quit", stopping the game and preventing reading an invalid 
+
+def main():
+	keepGoing = True
+	game = getDefaultGAme()
+	while keepGoing:
+		menu = getMenuChoice(), printing the menu
+		if menu == "0":
+			keepGoing = False, ending the loop
+		if menu == 1 through 5:
+			call the defined module (ie getDefaultGame()) corresponding with the menu
+		else:
+			print a statement describing invalid input
+			call main again
+call main()
+
+Variable List:
+menu
+defaultGame
+keepGoing2
+currentNode
+infile
+game
+outfile
+userinput
+decision
+keepGoing
+temp variable changenode
+temp variable item
+

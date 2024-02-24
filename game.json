@@ -1,0 +1,30 @@
+{
+  "start": [
+    "Begin the game!",
+    "Choose the story",
+    "story",
+    "Don't",
+    "quit"
+  ],
+  "story": [
+    "We are going on an adventure! Hooray!",
+    "Go left",
+    "left",
+    "Go right",
+    "right"
+  ],
+  "right": [
+    "There's bad things! Oh no!",
+    "Fight them",
+    "fight",
+    "Give up",
+    "quit"
+  ],
+  "left": [
+    "There's good things!",
+    "Take the treasure",
+    "treasure",
+    "Be humble",
+    "quit"
+  ]
+}
